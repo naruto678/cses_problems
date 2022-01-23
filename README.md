@@ -1,7 +1,5 @@
 #CSES problem set practice cli
-
-<img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fcodeforces.com%2Fblog%2Fentry%2F87912&psig=AOvVaw2ydY4gUwVeX7Mdb_lnpoyH&ust=1643035884646000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCID3l-iPyPUCFQAAAAAdAAAAABAD">
-
+<img src="logo.png">
    The main objecttive of the module is to be able to run some file directly . 
     usage would be as follows: 
         The directory would be as follows: 
