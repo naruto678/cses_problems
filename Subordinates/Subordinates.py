@@ -1,73 +1,47 @@
 from array import array 
+from functools import lru_cache
+import sys
+class Graph: 
+    def __init__(self, arr, n):
+        self.n=n 
+        self.arr=[(j, i+2)  for i, j in enumerate(arr)]
+        self.adj=[[] for i in range(n+1)]
+        self._create_graph()
+        self.counter=[0 for i in range(len(self.arr)+2)]
+        self.marked={}
 
-class Tree:
-    class Node: 
-        def __init__(self, val):
-            self.val=val
-            self.children=[]
-        def add_children(self, node): 
-            self.children.append(node)
-            return 
-
-    def __init__(self,arr): 
-        self.map={}
-        self.arr=[(j, i+2 ) for i , j in enumerate(arr)]
-        self.root=self.Node(1)
-        self.map[1]=self.root
-        self._construct_map()
-        self.children_count={}
-    
-    def _construct_map(self): 
+    def _create_graph(self): 
         for i in range(len(self.arr)): 
-            parent, child=self.arr[i]
-            parent_node, child_node=None, None
-            if parent not in self.map.keys(): 
-                parent_node=self.Node(parent)
-                self.map[parent]=parent_node
-            else: 
-                parent_node=self.map[parent]
+            self.add(self.arr[i][0], self.arr[i][1])
+
+    def add(self, u, v):
+        self.adj[u].append(v)
+    
+
+    def dfs(self, source):
+        print("currently doing dfs for source {}".format(source))
+        self.counter[source]=1 
+        self.marked[source]=True
+        for v in self.adj[source]:
+            if v in self.marked.keys() :
+                continue 
+            self.dfs(v)
+            self.counter[source]+=self.counter[v]
+
+    
             
-            if child not in self.map.keys(): 
-                child_node=self.Node(child)
-                self.map[child]=child_node
-            else: 
-                child_node=self.map[child]
-            parent_node.add_children(child_node)
-
-
-        
-    def find_children(self, node):
-        if node not in self.map.keys(): 
-            return 0
-        if len(self.map[node].children)==0: 
-            return 0 
-
-        if node in self.children_count.keys(): 
-            return self.children_count[node]
-        
-        res=len(self.map[node].children)
-        for child in self.map[node].children: 
-            res+=self.find_children(child.val)
-        
-        self.children_count[node]=res
-        return res
-            
-
-
-
+    
            
 
 
 def main():
+    sys.setrecursionlimit(100)# does not work due to recursion limit set 
     n=int(input())
     arr=array("i", map(int, input().split()))
-    tree=Tree(arr)
-    res=[]
-    for i in range(1, n+1): 
-        res.append(tree.find_children(i))
-    res=[str(i) for i in res]
+    graph=Graph(arr, n )
+    graph.dfs(1)
+    res=[str(i-1) for i in graph.counter][1:]
     print(" ".join(res))
-
 
 
 if __name__=='__main__': 
