@@ -1,2 +1,2 @@
 #!/bin/bash
-python3 TaskRunner.py 
+python3 TaskRunner.py $@ 
