@@ -1,8 +1,14 @@
+import argparse
 
 
 
-if __name__=='__main__': 
-    
+
+
+
+
+if __name__=='__main__':
+    parser=argparse.ArgumentParser()
+    parser.parse_args()
     '''
     The main objecttive of the module is to be able to run soem file directly . 
     usage would be as follows: 
@@ -31,4 +37,4 @@ if __name__=='__main__':
 
     '''
     print("Please visit later. Currently at work ")
-    return 
+
