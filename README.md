@@ -1,7 +1,9 @@
-#CSES problem set practice cli
+
 <img src="logo.png">
-   The main objecttive of the module is to be able to run some file directly . 
-    usage would be as follows: 
+   
+
+#The main objecttive of the module is to be able to run some file directly . 
+#usage would be as follows: 
         The directory would be as follows: 
             cses_problems: 
                     -> Problem1: 
