@@ -1,6 +1,7 @@
 from array import array 
 from functools import lru_cache
 import sys
+
 class Graph: 
     def __init__(self, arr, n):
         self.n=n 
@@ -27,11 +28,6 @@ class Graph:
                 continue 
             self.dfs(v)
             self.counter[source]+=self.counter[v]
-
-    
-            
-    
-           
 
 
 def main():
